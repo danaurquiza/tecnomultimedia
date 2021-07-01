@@ -1,6 +1,7 @@
 
 PFont fuente;
-int tiempo;
+int tiempo, tam, tam2;
+float desvanecer, letra;
 PImage red, pelota;
 String s= " \n Brian Cox \n Matthew Goode \n Scarlett Johansson \n  Emily Mortimer \n Jonathan Rhys Meyers \n Penelope Wilton ";
 
@@ -12,7 +13,10 @@ void setup() {
   fuente= loadFont( "WindsorBT-LightCondensed-48.vlw");
   red= loadImage("red.png");
   pelota=loadImage("pelota.png");
-  
+  desvanecer=255;
+  letra=175;
+  tam=38;
+  tam2=25;
 }
 
 
@@ -26,7 +30,7 @@ void draw() {
   if (tiempo<=tiempo%10) {
     background(0);
     smooth();
-    fill( 175);
+    fill( letra);
     textAlign( CENTER, BOTTOM );  
     textFont( fuente ); 
     textSize(50);
@@ -143,6 +147,7 @@ void draw() {
   //PANTALLA 14
   else if (tiempo==tiempo%145) {
 
+    fill(letra);
     background(0);
     textSize(25);
     text( "Produced by", width/2, 170);
@@ -152,13 +157,29 @@ void draw() {
   //PANTALLA 15
   else if (tiempo==tiempo%155) {
 
+    
     background(0);
     textSize(25);
     text( "Written and Directed by", width/2, 170);
     textSize(38);
+
     text( "Woody Allen", width/2, height/2+20);
+   
+  } //PANTALLA 16
+  else if (tiempo==tiempo%160) {
+    
+    fill(175, desvanecer);
+    background(0);
+    textSize(tam2);
+    text( "Written and Directed by", width/2, 170);
+    textSize(tam);
+    text( "Woody Allen", width/2, height/2+20);
+    
+    tam=tam-2;
+    tam2=tam2-2;
+    desvanecer=desvanecer-100;
   }
-  //PANTALLA 16
+  //PANTALLA 17
   else if (tiempo>=tiempo%165) {
     frameRate(60);
     image(red, 0, 0, 800, 400);
@@ -169,11 +190,10 @@ void mouseMoved() {
   if ( (tiempo>tiempo%165) &&
     (pmouseX>0)&&(pmouseX<800)&&(pmouseY>0)&&(pmouseY<100) ) {
     frameRate(60);
-      
+
     image(pelota, pmouseX, pmouseY, 50, 50);
-    
   }
- 
 }
 
- 
+
+
