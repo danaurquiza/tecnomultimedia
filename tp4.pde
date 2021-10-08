@@ -1,3 +1,5 @@
+//videoyt https://youtu.be/T1VKe2eDdXo
+
 int pantalla = 0;
 int[] colores = new int[100];
 int tamtex1;
