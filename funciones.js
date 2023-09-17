@@ -2,9 +2,7 @@ function General () {
   contador = 0;
   tiempoInicial = millis();
 
-  colisiono [0] = false;
-  colisiono [1] = false;
-  colisiono [2] = false;
+
   canastaX = width/2;
   frutaY=0;
   frutaX [0] = random(width);
