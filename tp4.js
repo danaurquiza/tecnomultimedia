@@ -1,4 +1,4 @@
-
+//https://youtu.be/8KFlyA-iraU
 
 let cant=3; //para el for de fruta
 let frutaX = [];
