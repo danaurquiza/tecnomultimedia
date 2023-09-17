@@ -10,9 +10,9 @@ let fruta = [];
 let fondo, fondo1, canasta;
 
 let contador;
-let colisiono = [];
+
 let tiempoInicial;
-let debug = false;
+
 
 
 function preload() {
@@ -81,9 +81,9 @@ function draw() {
 
     condicion ();
     //ME FALTA UNA CONDICION PARA GANAR
-    if (contador >= 10) {
+    if (contador >= 20) {
       pantalla = 'ganaste'; //gana
-    } else if ( contador <= 9 && tiempoActual >= 20*1000) {
+    } else if ( contador <= 19 && tiempoActual >= 20*1000) {
       pantalla ='perdiste' ; //pierde
     }
 
