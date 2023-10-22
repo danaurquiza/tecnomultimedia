@@ -10,7 +10,7 @@ class Juego {
   }
 
   dibujar() {
-    if (this.estado == "instrucciones") { //------- MENU
+    if (this.estado == "instrucciones") {
       textSize (35);
       fill(255);
       text( "perdido en el bosque", 150, 100);
@@ -21,19 +21,18 @@ class Juego {
       fill(0);
       textSize(15);
       text( "Jugar", 280, 400);
-    } else if (this.estado == "jugando") { //------- JUEGO
-      // escenario
+    } else if (this.estado == "jugando") {
+
+      
       background(255);
       fill (0);
-      line (200, 0, 200, 600); //carriles
-      line (400, 0, 400, 600); //carriles
       textSize(10);
       text ("vidas: "+ this.vidas, 10, 10 );
       text ("tiempo: "+ this.tiempoActual/1000, 10, 25 );
 
       // jugador
       this.Canasta.dibujar();
-      this.Canasta.getVidas();
+      this.Canasta.cantidadAtrapadas();
       //this.Jack.actualizar();
 
       //policias
@@ -42,11 +41,11 @@ class Juego {
         this.Frutas[i].actualizar();
       }
 
-      if ( this.tiempoActual >= 10*1000) { //pierde a los 10 segundos. Modificar
-        this.estado = "perdiste";
+      if ( this.tiempoActual >= 15*1000) { 
+        this.estado = "perder";
       }
-    } else if ( this.estado == "perdiste" ) { // ------ PERDISTE
-      background (255, 0, 0);
+    } else if ( this.estado == "perder" ) { 
+      background (255);
       fill (0);
       textSize(50);
       text( "Te faltaron manzanas y moriste\n de hambre :/", 100, 200 );
@@ -54,8 +53,8 @@ class Juego {
       textSize(20);
       fill(255);
       text( "Reiniciar", width/2+70, 450 );
-    } else if ( this.estado == "ganaste" ) { // ------- GANASTE
-      background (0, 255, 0);
+    } else if ( this.estado == "ganar" ) { 
+      background (255);
       fill (0);
       text( "Lograste juntar todas las manzanas\n para no morir de hambre YAY", width/2, 200 );
       circle (width/2-100, 300, 80);
@@ -87,7 +86,7 @@ tiempo (mousePressed) {
 }
 
 botones (mousePressed) {
-  if ( this.estado == "perdiste" ) {
+  if ( this.estado == "perder" ) {
     if ( dist ( width/2+100, 500, mouseX, mouseY ) < 40 ) {
       this.estado = "jugando";
       this.tiempoInicial = millis ();
