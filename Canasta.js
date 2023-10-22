@@ -2,10 +2,11 @@ class Canasta{
   constructor(posX, posY){
     this.posX = posX;
     this.posY = posY;
+    this.colorCanasta=color(0,200,0);
   }
   
   dibujar(){
-
+fill(this.colorJ);
     rect(this.posX, this.posY, 50, 50);
   }
   

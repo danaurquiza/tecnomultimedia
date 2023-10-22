@@ -1,6 +1,7 @@
+
+
 let objJuego;
-let objCanasta;
-let objFruta;
+
 
 function setup() {
  createCanvas(400,400);
@@ -13,6 +14,10 @@ function draw() {
   objJuego.dibujar();
 }
 
+function mousePressed(){
+  objJuego.tiempo(mousePressed);
+  objJuego.botones(mousePressed);
+}
 function keyPressed(){
   objJuego.teclaPresionada(keyCode);
 }
