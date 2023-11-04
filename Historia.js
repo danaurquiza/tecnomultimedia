@@ -1,12 +1,22 @@
-class Historia(){
+class Historia{
 
 constructor(){
-this.crearMinijuego();
+  this.pantalla= "menu";
+//this.crearMinijuego();
+//this.arregloImagenes= [];
 
 }
 
-dibujar(){
-this.Minijuego.dibujar();
+dibujar(imgArray,textoArray){
+
+  if(this.pantalla=="menu"){
+//this.Minijuego.dibujar();
+image(imgArray[8],0,0,600,600);
+
+fill(200,0,200);
+text(textoArray[1],200,200);
+//this.estoyDentrodeBotonCircular(12);
+  }
 
 }
 
@@ -18,8 +28,8 @@ botones(){
 
 }
   
-estoyDentrodeBotonCircular(){
-
+estoyDentrodeBotonCircular(tam){
+//textSize(tam);
 }
 
 estoyDentrodeBotonCuadrado(){
@@ -27,8 +37,9 @@ estoyDentrodeBotonCuadrado(){
 }
 
 crearMinijuego(){
-this.Minijuego = new Minijuego()
+//this.Minijuego = new Minijuego()
 
 }
+
 
 }
