@@ -46,7 +46,7 @@ class Botones{
   
   
   textoBotones() {
-    fill(0, 255, 0);
+    fill(0);
     textSize(17);
     textAlign(CENTER);
   }

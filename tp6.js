@@ -16,7 +16,7 @@ objHistoria = new Historia(fondo,texto, titulo, regular);
 function draw() {
   background(200,200,0);
   
-objHistoria.dibujar(fondo,texto);
+objHistoria.dibujar();
 
 }
 
