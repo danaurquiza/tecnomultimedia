@@ -1,15 +1,12 @@
 class Canasta {
-  constructor(posX, posY) {
-    this.posX = posX;
-    this.posY = posY;
-    this.colorCanasta=color(0, 200, 0);
-    this.fruta = new Fruta();
-    this.cant=3;
+  constructor(posX, posY, canasta) {
+    this.posXC = posX; //width/2
+    this.posYC = posY; //300
   }
 
   dibujar() {
-    fill(this.colorJ);
-    rect(this.posX, this.posY, 50, 50);
+    imageMode(CENTER)
+    image (canasta, this.posXC, this.posYC, 200, 200);
   }
 
   teclaPresionada(keyCode) {
@@ -21,21 +18,12 @@ class Canasta {
   }
 
   moverDerecha() {
-    this.posX += 10;
+    this.posXC += 100;
   }
 
   moverIzquierda() {
-    this.posX -= 10;
+    this.posXC -= 100;
   }
 
-  colision() {
-    contador++;
-    this.fruta.posY+=height;
-  }
 
-  tocoLaFruta(fruta) {
-    if (dist(this.fruta.posX, this.fruta.posY, this.posX, this.posY) < 15) {
-      this.colision();
-    }
-  }
 }

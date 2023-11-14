@@ -1,23 +1,34 @@
 
-
 let objJuego;
-
+let fruta = [];
+let fondo,fondo1,canasta;
 
 function setup() {
- createCanvas(400,400);
-  objJuego = new Juego(10);
+  createCanvas(600, 600);
+  objJuego = new Juego(fruta,fondo,fondo1,canasta);
 }
 
 
 function draw() {
-  background(200);
-  objJuego.dibujar();
+  background(0,200,0);
+  objJuego.dibujar(fruta,fondo,fondo1,canasta);
 }
 
-function mousePressed(){
-  objJuego.tiempo(mousePressed);
+function preload() {
+
+  for ( let i = 0; i < 3; i++ ) {
+    fruta[i] = loadImage('assets/fruta'+ i +'.png');
+  }
+
+  fondo = loadImage('assets/fondo.jpg');
+  fondo1 = loadImage ("assets/fondo1.jpg");
+  canasta = loadImage ("assets/canasta.png");
+}
+
+function mousePressed() {
+
   objJuego.botones(mousePressed);
 }
-function keyPressed(){
+function keyPressed() {
   objJuego.teclaPresionada(keyCode);
 }
