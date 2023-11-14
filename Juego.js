@@ -6,6 +6,9 @@ class Juego {
     this.estado = "instrucciones"; //logica de estados
     this.objCanasta= new Canasta(width/2, 550, canasta);
     this.crearObjFruta();
+    this.contador=0;
+    this.tiempoInicial=millis();
+    this.tiempoActual = millis () - this.tiempoInicial;
   }
 
   crearObjFruta() {
@@ -54,6 +57,13 @@ class Juego {
 
       //las frutas
       this.fruta[2].dibujar();
+      
+       push();
+    fill(255);
+    textSize(30);
+    text( "Frutas: "+ this.contador, 70, 30 );
+    text( "Tiempo: "+ nf(this.tiempoActual/1000,2,1), 700, 30 );
+    pop();
     }
   }
 
