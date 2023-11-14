@@ -114,7 +114,7 @@ class Pantallas {
       text( "Fin", 510, 475);
     }
 
-    //sigue la historia del moño LLEGA EL RATON
+    //LLEGA EL RATON
     else if (this.estado=="P10") {
       image(this.imgArray[14], 0, 0, 600, 600);
       this.cuadradoDeTexto( 150, 438, 280, 145, 7, 170, 465, 250, 200 );      
@@ -124,38 +124,50 @@ class Pantallas {
 
     //LLEGA GATO
     else if (this.estado=="P11") {
-      image(this.imgArrays[12], 0, 0, 600, 600);
+      image(this.imgArray[12], 0, 0, 600, 600);
+      this.cuadradoDeTexto(150, 458, 280, 125, 8, 170, 488, 250, 200 );    
+      this.botones.botonCuadrado (40, 40+60, 30, 30+40, 60, 40);
+      text("Seguir", 70, 55);
     }
 
     //GATO ATACA
     else if (this.estado=="P12") {
+      image(this.imgArray[6], 0, 0, 600, 600);
+      this.cuadradoDeTexto(150, 438, 280, 145, 9, 170, 465, 250, 200 );    
+      this.botones.botonCuadrado (490, 490+60, 30, 30+40, 60, 40);
+      text("Seguir", 520, 55);
     }
 
     //RATON ESCUCHA GRITOS
     else if (this.estado=="P13") {
+      image(this.imgArray[15], 0, 0, 600, 600);
+      this.cuadradoDeTexto(15, 405, 230, 170, 10, 30, 435, 200, 200);
+      this.botones.botonCuadrado (470, 470+60, 475, 475+40, 60, 40);
+      text("Seguir", 500, 500);
     }
 
-    //RATON LA RESCATA
-    else if (this.estado=="P14") {
-    }
-
-    //RATITA SE CASA FIN
-    else if (this.estado=="P15") {
-      image(imgArray[11], 0, 0, 600, 600);
-    }
+  
+    ////RATITA SE CASA FIN
+    //else if (this.estado=="P15") {
+    //  image(this.imgArray[11], 0, 0, 600, 600);
+    //}
 
     //RATITA SALE EN LAS NOTICIAS
     else if (this.estado=="P16") {
-      image(imgArray[19], 0, 0, 600, 600);
-      
+      image(this.imgArray[19], 0, 0, 600, 600);      
+      this.botones.botonCircular(450, 100, 120, 255, 180); 
+      this.botones.botonCircular(100, 100, 120, 255, 180); 
     }
 
     //RATITA DESCUBRE Q SON RE TURBIOS
     else if (this.estado=="P17") {
+      image(this.imgArray[7], 0, 600, 600);
     }
 
     //RATITA DESCUBRE Q SON RE HUMILDES
     else if (this.estado=="P18") {
+      image(this.imgArray[20], 0, 0, 600, 600);
+      this.textoFlotante(18, 310, 15, 220, 160);
     }
 
     //RATITA REFLECCIONA
@@ -170,6 +182,11 @@ class Pantallas {
     else if (this.estado=="P21") {
     } 
     
+      //RATON LA RESCATA
+    else if (this.estado=="P14") {
+      image(this.imgArray[1], 0, 0, 600, 600);
+      
+    }
   }
   
   botonPresionado(mousePressed) {
@@ -210,12 +227,7 @@ class Pantallas {
       this.estado = "P05"; //
     }
     
-    //PASA DE REGALAR LA MONEDA A MAMA Y BEBE A SALIR EN LAS NOTICIAS
-    if(this.estado == "P06" && this.botones.estoyDentrodeBotonCircular (100, 70, 100/2) ){
-     this. estado = "P16"; 
-    }
-    
-    
+    //
     if (this.estado == "P05" && this.botones.estoyDentrodeBotonCuadrado(316, 316+40, 490, 490+50 ) ) {
       this.estado = "P10"; //
     }
@@ -230,6 +242,9 @@ class Pantallas {
      this. estado = "P08"; 
     }
     
+    if(this.estado == "P06" && this.botones.estoyDentrodeBotonCircular ( 100, 70, 100/2 ) ){
+      this.estado = "P16";
+    }
     
     //PASA DE COMPRAR CAARAMELO A QUE LE DUELE LA BOCA    
     if(this.estado == "P07" && this.botones.estoyDentrodeBotonCircular (500, 500, 120/2) ){
@@ -261,7 +276,26 @@ class Pantallas {
       this.estado = "P11"; //
     }
     
+    //PASA DE LLEGAR EL GATO A ATACAR
+     if (this.estado == "P11" && this.botones.estoyDentrodeBotonCuadrado(40, 40+60, 30, 30+40) ) {
+      this.estado = "P12"; //
+    }
     
+     //PASA DE EL GATO ATACARLA A EL RATON ESCUCHAR LOS GRITOS
+     if (this.estado == "P12" && this.botones.estoyDentrodeBotonCuadrado(490, 490+60, 30, 30+40) ) {
+      this.estado = "P13"; //
+    }
+    
+     //PASA DE EL RATON ESCUCHAR LOS GRITOS A RESCATAR A RATITA
+     if (this.estado == "P13" && this.botones.estoyDentrodeBotonCuadrado(470, 470+60, 475, 475+40) ) {
+      this.estado = "P17"; //
+    }    
+    
+    //  //PASA DE RESCATAR GATITA A CASARSE
+    // if (this.estado == "P14" && this.botones.estoyDentrodeBotonCuadrado(470, 470+60, 475, 475+40) ) {
+    //  this.estado = "P15"; //
+    //}    
+   
   }
   
   
