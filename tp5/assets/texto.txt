@@ -1,0 +1,8 @@
+Con las flechas manejá la canasta.Tratá de agarrar 20 manzanas antes de que se termine el tiempo
+Te faltaron manzanas y moriste de hambre :/
+Lograste juntar todas las manzanas para no morir de hambre YAY
+START
+PERDISTE
+GANASTE
+REINICIO
+INSTRUCCIONES
