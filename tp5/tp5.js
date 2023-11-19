@@ -1,4 +1,6 @@
 
+
+//https://youtu.be/U2-k2Upm2F0
 let objJuego;
 let texto=[];
 let fruta, fondo, fondo1, canasta;
