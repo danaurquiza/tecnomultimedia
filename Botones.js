@@ -1,6 +1,6 @@
 class Botones{
   
-  constructor(posX, posY, r, x, x1, y, y1, ancho, alto, color){
+  constructor(posX, posY, r, x, x1, y, y1, ancho, alto, col1, col2){
   this.posX = posX;
   this.posY = posY;
   this.r = r;
