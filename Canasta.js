@@ -30,4 +30,10 @@ class Canasta {
   moverIzquierda() {
     this.posXC -= 50;
   }
+  
+  reiniciar(){
+  this.posXC = posX; //width/2
+    this.posYC = posY; //300
+    this.tamC=200;
+  }
 }

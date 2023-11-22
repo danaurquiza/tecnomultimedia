@@ -3,27 +3,25 @@
  //Legajo 91470/0
 
 
-//como llamar una clase anterior?
-//vincular el minijuego con historia-clase madre
-//-color de los botones
-//-vincular la historia con el minijuego
-//-poner texto de los botones 
-//-boton dentro de creditos para volver y hacer que caigan creditos
+//cambiar nombre fruta a plata
+//crear pantalla rechazo y vincular
+//ver como subir a la web
+//hacer la web html para mostrar trabajo
+//ver si cambiamos las manzanas por otra cosa y cambiar dialogos o instrucciones etc
 
-
-let objHistoria;
+let objPantallas;
 let fondo = [];
 let fondoMinijuego = [];
 let texto = [];
-let bot = [];
+
 let titulo;
 let regular;
-let canasta,manzana;
+let canasta, plata;
 
 function setup() {
 createCanvas(600,600);
 
-objHistoria = new Historia(fondo,texto, titulo, regular);
+objPantallas = new Pantallas();
 
 }
 
@@ -31,25 +29,25 @@ objHistoria = new Historia(fondo,texto, titulo, regular);
 function draw() {
 background(200,200,0);
   
-objHistoria.dibujar();
+objPantallas.dibujar();
 
 }
 
 function preload(){
   
-   for( let i = 0 ; i < 21 ; i++ ){
+   for( let i = 0 ; i < 22 ; i++ ){
     fondo[i] = loadImage('assets/rata'+ i +'.png');
   }
   for( let i = 0 ; i < 2 ; i++ ){
-    fondoMinijuego[i] = loadImage('assets/fondo'+ i +'.jpg');
+    fondoMinijuego[i] = loadImage('assets/fondo'+ i +'.png');
   }
   
   canasta = loadImage ("assets/canasta.png");
-  manzana = loadImage ("assets/manzana.png");
+  plata = loadImage ("assets/plata.png");
   
    texto = loadStrings('assets/texto.txt');
   
-   bot = loadStrings('assets/bot.txt'); 
+
     
    titulo = loadFont('assets/titulo.ttf');
    
@@ -57,8 +55,8 @@ function preload(){
 }
 
 function mousePressed(){
-  objHistoria.pantallas.botonPresionado(mousePressed); 
+  objPantallas.botonPresionado(mousePressed); 
 }
 function keyPressed() {
-  objHistoria.pantallas.Minijuego.teclaPresionada(keyCode);
+ objPantallas.Minijuego.teclaPresionada(keyCode);
 }

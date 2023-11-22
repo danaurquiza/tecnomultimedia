@@ -1,14 +1,13 @@
 class Minijuego {
 
-  constructor() {
+  constructor(aventuraEstado) {
     this.objCanasta= new Canasta(width/2, 550, canasta);
     this.crearObjFruta();
 
-this.imgMinijuego = fondoMinijuego;
+    this.imgMinijuego = fondoMinijuego;
     this.contador=0;
     this.tiempoInicial=millis();
     this.tiempoActual = millis () - this.tiempoInicial;
-    this.pasoPantalla= "estado";
   }
 
 
@@ -22,12 +21,12 @@ this.imgMinijuego = fondoMinijuego;
   }
 
   actualizar(distFrutaCanasta) {
-   
 
-      for (let i = 0; i < 3; i++) {
-        this.objFruta[i].actualizar();
-      }
-    
+
+    for (let i = 0; i < 3; i++) {
+      this.objFruta[i].actualizar();
+    }
+
 
 
     let distColision = 100;
@@ -52,35 +51,44 @@ this.imgMinijuego = fondoMinijuego;
       this.tiempoActual = millis () - this.tiempoInicial;
     }
   }
-  dibujar(){
-    
+  dibujar() {
 
-      image(this.imgMinijuego[0], 0, 0, 600, 600);
-      
-  for (let i = 0; i < 3; i++) {
-        this.objFruta[i].dibujar();
-        this.objFruta[i].actualizar();
-      }
 
-      this.objCanasta.dibujar();
+    image(this.imgMinijuego[0], 0, 0, 600, 600);
 
-      push();
-      fill(255);
-      textSize(30);
-      textAlign(CENTER);
-      text( "Frutas: "+ this.contador, 70, 30 );
-      text( "Tiempo: "+ nf(this.tiempoActual/1000, 2, 0), 500, 30 );
-      pop();
+    for (let i = 0; i < 3; i++) {
+      this.objFruta[i].dibujar();
+      this.objFruta[i].actualizar();
+    }
 
-      if ( this.tiempoActual >= 5*1000) { //pierde a los 20 segundos.
-        this.pasoPantalla = "P21";
-      }
-      if ( this.contador >= 20) { //pierde a los 20 segundos.
-        this.estado = "P21";
-      }
-    
+    this.objCanasta.dibujar();
+
+    push();
+    fill(0);
+    textSize(30);
+    stroke(255);
+    strokeWeight(5);
+    textAlign(CENTER);
+    text( "Frutas: "+ this.contador, 70, 30 );
+    text( "Tiempo: "+ nf(floor(this.tiempoActual/1000, 0)), 500, 30 );
+    pop();
+
+   
   }
-   teclaPresionada(keyCode) {
+  
+  reiniciarVariables(){
+    
+    this.objCanasta= new Canasta(width/2, 550, canasta);
+    this.crearObjFruta();
+
+    this.imgMinijuego = fondoMinijuego;
+    this.contador=0;
+    this.tiempoInicial=millis();
+    this.tiempoActual = millis () - this.tiempoInicial;
+  }
+  
+  
+  teclaPresionada(keyCode) {
     this.objCanasta.teclaPresionada(keyCode);
   }
 }//cierra
