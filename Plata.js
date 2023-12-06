@@ -1,6 +1,6 @@
 class Plata {
 
-  constructor( posX,imgP) {
+  constructor( posX, imgP) {
 
     this.posXPlata= posX;
     this.posYPlata =int (random (-100, -50) ); //caen todas al mismo tiempo
@@ -26,14 +26,10 @@ class Plata {
     imageMode(CENTER);
     image (this.plata, this.posXPlata, this.posYPlata, this.tam, this.tam);
     pop();
-
     this.moverPlata();
-    // this.actualizar();
   }
 
   moverPlata() {
-
-    //this.posYPlata+=5; //cae Plata
 
     if ( this.posYPlata > height ) {
 
@@ -45,11 +41,4 @@ class Plata {
     }
   }
 
-  reiniciar() {
-    this.posXPlata= posX;
-    this.posYPlata =int (random (-100, -50) ); //caen todas al mismo tiempo
-    this.tam=50;
-    this.vel=random(2, 3);
-    this.colisiono = false;
-  }
 }

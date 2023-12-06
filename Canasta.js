@@ -13,9 +13,6 @@ class Canasta {
     pop();
   }
 
-  //puntosSumando() {
-  //  return this.contador;
-  //}
   teclaPresionada(keyCode) {
     if (keyCode == LEFT_ARROW && this.posXC > 100) {
       this.moverIzquierda();
@@ -32,9 +29,4 @@ class Canasta {
     this.posXC -= 50;
   }
   
-  reiniciar(){
-  this.posXC = posX; //width/2
-    this.posYC = posY; //300
-    this.tamC=200;
-  }
 }

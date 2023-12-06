@@ -1,3 +1,5 @@
+//LO LLAMAMOS EN EL ESTADO 22
+
 class Minijuego {
 
   constructor(aventuraEstado, imgCanasta, imgPlata, fondoMinijuego) {
@@ -10,21 +12,17 @@ class Minijuego {
     this.contador=0;
     this.tiempoInicial=millis();
     this.tiempoActual = millis () - this.tiempoInicial;
-    this.imgPlata=imgPlata;
   }
-
 
   crearObjPlata() { //metodo
     this.objPlata= [];
-
 
     for (let i = 0; i < 3; i++) {//es un arreglo de 3 Platas hecho objeto y le pasa el valor en parentesis a cada valor x separado
       this.objPlata[i] = new Plata (i*random(width), this.imgPlata);
     }
   }
 
-  actualizar(distPlataCanasta) {
-
+  actualizar() {
 
     for (let i = 0; i < 3; i++) {
       this.objPlata[i].actualizar();
@@ -46,7 +44,6 @@ class Minijuego {
 
   dibujar() {
 
-
     image(this.imgMinijuego[0], 0, 0, 600, 600);
 
     for (let i = 0; i < 3; i++) {
@@ -67,7 +64,7 @@ class Minijuego {
     pop();
   }
 
-  reiniciarVariables() {
+  reiniciarVariables() { //reinicio variables par cuando comienza el juego
 
     this.objCanasta= new Canasta(width/2, 550, canasta);
     this.crearObjPlata();
