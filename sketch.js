@@ -49,6 +49,6 @@ function draw() {
 
   antesHabiaSonido = haySonido; 
 
-  gestorAmp.dibujar(30, 50);
+  //gestorAmp.dibujar(30, 50);
 
 }
