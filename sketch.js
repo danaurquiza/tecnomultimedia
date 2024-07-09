@@ -1,4 +1,3 @@
-//https://youtu.be/rntG5uMsCZ8
 const model_url = 'https://cdn.jsdelivr.net/gh/ml5js/ml5-data-and-models/models/pitch-detection/crepe/';
 
 let obra;  
@@ -14,10 +13,11 @@ let audioContext;
 let pitch;
 let altura;
 let tono;
+let amplitudOpacidad;
 
-let monitorear = false;
+let monitorear = true;
 //----CONFIGURACION-----
-let AMP_MIN = 0.0010; // umbral mínimo de sonido que supera al ruido de fondo
+let AMP_MIN = 0.00010; // umbral mínimo de sonido que supera al ruido de fondo
 let AMP_MAX = 0.1 // amplitud máxima del sonido
 let amp; //carga la amplitud de la señal del mic- VOLUMEN
 
@@ -29,7 +29,9 @@ let gestorPitch;
 
 let amortiguacion = 0.5; //amplitud filtrada super amortiguada, el otro extremo seria 0.1
 
-let marcaEnElTiempo;
+let tiempoActual;
+let tiempoInicial;
+let tiempoTermina=5000;
 
 function preload(){
   for(let i = 0; i<19; i++){
@@ -41,10 +43,12 @@ function preload(){
 }
 
 function setup() {
+  frameRate(10);
   obra = new Obra(imagenes);
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(1000, 900);
   background(255, 241, 214);
   imageMode(CENTER);
+  
 
   //------PALETAS DE COLORES
   paletaAguda = new Paleta( imagenAguda );
@@ -74,15 +78,22 @@ function draw() {
   //si la intensidad supera un umbral (en este caso el valor que le paso) entonces hay sonido
   let haySonido =  gestorAmp.filtrada > 0.2;
   //amp > AMP_MIN; //esta comparacion hace que la variable booleana se combierta en true
+  
+  //amplitudOpacidad = map( paletaAguda.darUnColor(), 0 , 255, AMP_MIN , AMP_MAX );
 
-
-  //let empezoElSonido = haySonido && !antesHabiaSonido; //uno es true y el otro false
-  //let terminoElSonido  = !haySonido && antesHabiaSonido // valor actual y del fotograma anterior. comparacion de la variable anterior
+  let empezoElSonido = haySonido && !antesHabiaSonido; //uno es true y el otro false
+  let terminoElSonido  = !haySonido && antesHabiaSonido; // valor actual y del fotograma anterior. comparacion de la variable anterior
   if (haySonido){
-    frameRate (10);
-    console.log ("estado:"+ obra.estado);
-    console.log ("altura:"+ obra.altura);
-    obra.dibujar();
+    if(empezoElSonido){
+      tiempoInicial=millis();
+      console.log(tiempoInicial);
+    }
+    let valorOpacidad=map(gestorAmp.filtrada,0,0.5,0,155);
+    valorOpacidad=constrain(valorOpacidad,0,255);
+    obra.dibujar(valorOpacidad);
+  }
+   if(millis() > tiempoInicial + terminoElSonido + tiempoTermina){
+background(255, 241, 214);
   }
   if( monitorear ){
     gestorAmp.dibujar( 100 , 100 );

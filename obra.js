@@ -3,26 +3,26 @@ class Obra {
     this.trazos = imagenes;
     this.cantidadTrazos = 20;
     this.contador = 0;
-    this.x0 = (windowWidth/2 - windowWidth* 0.35);
-    this.x1 = (windowWidth/2 + windowWidth* 0.35);
-    this.y0 =  (windowHeight/2 - windowHeight* 0.2);
-    this.y1 = (windowHeight/2 + windowHeight* 0.2);
-    this.hMax = (windowHeight* 0.4); //acomoda el alto del png para que no pase el 40% de la pantalla
-    this.maxTrazos = 500; // Número máximo de trazos
+    this.x0 = (1000/2 - 1000* 0.45);
+    this.x1 = (1000/2 + 1000* 0.45);
+    this.y0 =  (900/2 - 900* 0.30);
+    this.y1 = (900/2 + 900* 0.35);
+    this.hMax = (900* 0.4); //acomoda el alto del png para que no pase el 40% de la pantalla
+    this.maxTrazos = 1000; // Número máximo de trazos
     this.trazosDibujados = 0; // Contador de trazos dibujados
     this.trazosPorCiclo = 2; // Número de trazos por ciclo
     this.estado = "DIBUJAR"; // Estado inicial
   }
 
-  dibujar() {
+  dibujar(opacidad) {
       for (let i = 0; i < this.trazosPorCiclo; i++) {
-        if (this.trazosDibujados < this.maxTrazos) {
+        
           let cual = int(random(this.trazos.length));
           let imag = this.trazos[cual];
-          tint(this.elegirColor());
+          tint(this.elegirColor(opacidad));
           image(imag, this.getPositionX(), this.getPositionY(), this.resizeW(imag), this.resizeH(imag));
           this.trazosDibujados++;
-        }
+        
       }
   }
   resizeW(imag){
@@ -54,12 +54,13 @@ class Obra {
     this.estado = "ACTIVO"
   }
 
-  elegirColor(){
+  elegirColor(opacidad=255){
+    
     let elegido = color(0);
     if( tono > 0.5 ){
-      elegido = paletaAguda.darUnColor( 150 );
+      elegido = paletaAguda.darUnColor( opacidad );
     }else{
-      elegido = paletaGrave.darUnColor( 150 );
+      elegido = paletaGrave.darUnColor( opacidad );
     }
     return elegido;
   }
