@@ -15,7 +15,7 @@ let altura;
 let tono;
 let amplitudOpacidad;
 
-let monitorear = true;
+let monitorear = false;
 //----CONFIGURACION-----
 let AMP_MIN = 0.00010; // umbral mínimo de sonido que supera al ruido de fondo
 let AMP_MAX = 0.1 // amplitud máxima del sonido
